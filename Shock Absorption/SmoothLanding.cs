@@ -17,7 +17,6 @@ public class SmoothLanding : MonoBehaviour
     public float DivisionY;
 
     public PlayerMovement Pm;
-    public bool isTouching;
 
     // Start is called before the first frame update
     void Start()

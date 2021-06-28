@@ -6,25 +6,23 @@ public class SmoothLanding : MonoBehaviour
 {
     public float DownSpeed = 0.1f;
     public float UpSpeed = 0.1f;
-    public GameObject DownPos;
-    public GameObject UpPos;
+
+    public float DownAmount;
 
     public GameObject ParticleSystem;
 
-    public float Timer;
+    public float AfterTheLandTimer;
     float _Timer;
 
     public float DivisionY;
 
-    public PlayerMovement Pm;
-
-    // Start is called before the first frame update
-    void Start()
+    PlayerMovement Pm;
+    
+    void Awake()
     {
-        
+        Pm = GetComponentInParent<PlayerMovement>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         _Timer -= Time.deltaTime;
@@ -37,7 +35,7 @@ public class SmoothLanding : MonoBehaviour
 
         if (_Timer > 0)
         {
-            transform.position = Vector3.Lerp(transform.position, DownPos.transform.position + new Vector3(0, Pm.GetComponent<Rigidbody>().velocity.y / DivisionY   , 0), DownSpeed * Time.timeScale);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(0, (Pm.GetComponent<Rigidbody>().velocity.y / DivisionY) + -DownAmount, 0), DownSpeed * Time.timeScale);
         }
         if (_Timer <= 0)
         {

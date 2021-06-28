@@ -9,8 +9,6 @@ public class SmoothLanding : MonoBehaviour
 
     public float DownAmount;
 
-    public GameObject ParticleSystem;
-
     public float AfterTheLandTimer;
     float _Timer;
 
